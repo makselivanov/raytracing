@@ -5,6 +5,7 @@ plugins {
 
 group = "org.example"
 version = "1.0-SNAPSHOT"
+val glmVersion: String by project
 
 repositories {
     mavenCentral()
@@ -12,6 +13,7 @@ repositories {
 
 dependencies {
     testImplementation(kotlin("test"))
+    implementation("kotlin.graphics:glm:$glmVersion")
 }
 
 tasks.test {
