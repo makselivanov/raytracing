@@ -1,4 +1,8 @@
+import raytracing.parser.SceneParser
+
 fun main(args: Array<String>) {
-    val input_description_path = args[0]
-    val output_picture_path = args[1]
+    val inputDescriptionPath = args[0]
+    val outputPicturePath = args[1]
+    val scene = SceneParser.parse(inputDescriptionPath)
+    scene.save(outputPicturePath)
 }

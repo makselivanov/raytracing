@@ -9,6 +9,7 @@ val glmVersion: String by project
 
 repositories {
     mavenCentral()
+    maven("https://raw.githubusercontent.com/kotlin-graphics/mary/master")
 }
 
 dependencies {
