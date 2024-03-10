@@ -7,7 +7,7 @@ import raytracing.scene.Scene
 
 object SceneParser {
     fun parse(descriptionPath: String): Scene {
-        var scene = Scene()
+        val scene = Scene()
         val supportedCommands = Commands(scene)
         File(descriptionPath).forEachLine { line ->
             val words = line.split(" ")

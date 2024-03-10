@@ -1,7 +1,7 @@
 package raytracing.scene
 
 import glm_.vec3.Vec3
-import raytracing.scene.Camera
+import java.util.Optional
 
 const val colorDepth = 255
 const val channelSize = 3
@@ -12,18 +12,29 @@ fun Float.toChannelColor(): Byte {
 class Scene {
     var width: Int = 0
     var height: Int = 0
-    var bg_color: Vec3 = Vec3(0)
+    var bgColor: Vec3 = Vec3(0)
     var camera: Camera = Camera()
     var primitives: MutableList<Primitive> = mutableListOf()
 
+    private fun raytrace(ray: Ray): Vec3 {
+        val depthIndexed: List<Pair<Float?, Int>> = primitives.mapIndexed { index, primitive ->
+            primitive.shape.intersectedWith(ray) to index
+        }.filter { it.first != null }
+        //TODO depth in camera
+    }
+
+    private fun generateRay(coord: PixelCoord): Ray {
+        //TODO use camera and coord to generate Ray
+    }
+
     fun render(): RenderedScene {
         val renderedScene = RenderedScene(width, height, channelSize)
-        var channelIndex = 0
-        for (index in renderedScene.image.indices) {
-            renderedScene.image[index] = bg_color[channelIndex].toChannelColor()
-            channelIndex += 1
-            if (channelIndex == renderedScene.channelSize) {
-                channelIndex = 0
+        for (y in 0..<height) {
+            for (x in 0..<width) {
+                val coord = PixelCoord(x, y)
+                val ray = generateRay(coord)
+                val color = raytrace(ray)
+                renderedScene.setColor(coord, color)
             }
         }
         return renderedScene

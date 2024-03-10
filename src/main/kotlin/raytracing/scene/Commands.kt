@@ -15,7 +15,7 @@ class Commands(var scene: Scene) {
     }
 
     val commandBackground = { red: Float, green: Float, blue: Float ->
-        scene.bg_color = Vec3(red, green, blue)
+        scene.bgColor = Vec3(red, green, blue)
     }
 
     val commandSetCameraPosition = { x: Float, y: Float, z: Float ->
