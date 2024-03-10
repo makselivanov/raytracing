@@ -4,5 +4,6 @@ fun main(args: Array<String>) {
     val inputDescriptionPath = args[0]
     val outputPicturePath = args[1]
     val scene = SceneParser.parse(inputDescriptionPath)
-    scene.save(outputPicturePath)
+    val renderedScene = scene.render()
+    renderedScene.save(outputPicturePath)
 }
