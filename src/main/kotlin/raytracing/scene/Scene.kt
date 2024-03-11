@@ -31,16 +31,15 @@ class Scene {
         val depthIndexed: List<Pair<Float, Int>> = primitives.mapIndexed { index, primitive ->
             intersect(primitive, ray) to index
         }.filter { it.first != null }.map { it.first!! to it.second }
-        //TODO depth in camera
         val minDepth = depthIndexed.minByOrNull { it.first } ?: return bgColor
-        return primitives[minDepth.second].color //FIXME sure?
+        return primitives[minDepth.second].color
     }
 
     private fun generateRay(coord: PixelCoord): Ray {
         val px = coord.x + 0.5
         val py = coord.y + 0.5
         val fx = (2 * px / width - 1) * tan(camera.fovX / 2)
-        val fy = (2 * py / width - 1) * tan(camera.fovY / 2) //FIXME maybe -1?
+        val fy = -(2 * py / width - 1) * tan(camera.fovY / 2)
         val localDir = Vec3(fx, fy,1)
         val direction = localDir.x * camera.right + localDir.y * camera.up + localDir.z * camera.forward
         val directionNormal = direction.normalizeAssign()
