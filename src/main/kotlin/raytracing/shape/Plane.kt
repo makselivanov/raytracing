@@ -5,6 +5,7 @@ import raytracing.scene.Ray
 
 class Plane(val normal: Vec3): Shape {
     override fun intersectedWith(ray: Ray): Float? {
-        TODO("Not yet implemented")
+        val depth = - ray.start.dot(normal) / ray.direction.dot(normal)
+        return if (depth < 0) null else depth
     }
 }

@@ -5,6 +5,6 @@ import raytracing.scene.Ray
 
 class Ellipsoid(radius: Vec3): Shape {
     override fun intersectedWith(ray: Ray): Float? {
-        TODO("Not yet implemented")
+        return null //TODO
     }
 }

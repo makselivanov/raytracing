@@ -1,5 +1,6 @@
 package raytracing.scene
 
+import glm_.quat.Quat
 import glm_.vec3.Vec3
 import glm_.vec4.Vec4
 import kotlin.math.atan
@@ -60,7 +61,7 @@ class Commands(var scene: Scene) {
     }
 
     val commandSetRotation = { x: Float, y: Float, z: Float, w: Float ->
-        scene.primitives.last().rotation = Vec4(x, y, z, w)
+        scene.primitives.last().rotation = Quat(w, x, y, z)
     }
 
     val commandSetColor = { r: Float, g: Float, b: Float ->
