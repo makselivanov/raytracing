@@ -22,7 +22,7 @@ class Scene {
     private fun intersect(primitive: Primitive, ray: Ray): Float? {
         val conjRotation = glm.conjugate(primitive.rotation)
         val newDir = glm.rotate(conjRotation, ray.direction)
-        val newPos = ray.start - primitive.position
+        val newPos = glm.rotate(conjRotation, ray.start - primitive.position)
         val shiftedRay = Ray(newPos, newDir)
         return primitive.shape.intersectedWith(shiftedRay)
     }

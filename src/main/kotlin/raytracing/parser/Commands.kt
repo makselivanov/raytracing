@@ -1,10 +1,11 @@
-package raytracing.scene
+package raytracing.parser
 
 import glm_.quat.Quat
 import glm_.vec3.Vec3
-import glm_.vec4.Vec4
 import kotlin.math.atan
 import kotlin.math.tan
+import raytracing.scene.Primitive
+import raytracing.scene.Scene
 import raytracing.shape.Box
 import raytracing.shape.Ellipsoid
 import raytracing.shape.Plane
@@ -37,7 +38,8 @@ class Commands(var scene: Scene) {
 
     val commandSetFovX = { angle: Float ->
         scene.camera.fovX = angle
-        scene.camera.fovY = 2 * atan( tan(angle / 2) * scene.height / scene.width )
+        val aspectRatio = scene.width / scene.height
+        scene.camera.fovY = 2 * atan( tan(angle / 2) / aspectRatio )
     }
 
     val commandCreatePrimitive = {

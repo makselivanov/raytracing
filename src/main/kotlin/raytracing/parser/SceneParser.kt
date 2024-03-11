@@ -1,7 +1,6 @@
 package raytracing.parser
 
 import java.io.File
-import raytracing.scene.Commands
 import raytracing.scene.Scene
 
 
