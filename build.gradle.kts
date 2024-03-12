@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm") version "1.9.0"
+    id("com.github.johnrengelman.shadow") version "8.1.1"
     application
 }
 
@@ -29,12 +30,6 @@ application {
     mainClass.set("MainKt")
 }
 
-
 tasks.jar {
-    manifest {
-        attributes(mapOf(
-            "Main-Class" to "MainKt",
-            "Implementation-Title" to project.name,
-            "Implementation-Version" to project.version))
-    }
+    manifest.attributes["Main-Class"] = "MainKt"
 }
