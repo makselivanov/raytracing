@@ -38,7 +38,7 @@ class Scene {
         val px = coord.x + 0.5
         val py = coord.y + 0.5
         val fx = (2 * px / width - 1) * tan(camera.fovX / 2)
-        val fy = -(2 * py / width - 1) * tan(camera.fovY / 2)
+        val fy = -(2 * py / height - 1) * tan(camera.fovY / 2)
         val localDir = Vec3(fx, fy,1)
         val direction = localDir.x * camera.right + localDir.y * camera.up + localDir.z * camera.forward
         val directionNormal = direction.normalize()
