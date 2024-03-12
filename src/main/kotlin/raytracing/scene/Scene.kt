@@ -3,7 +3,6 @@ package raytracing.scene
 import glm_.glm
 import glm_.vec3.Vec3
 import glm_.vec3.operators.times
-import java.util.Optional
 import kotlin.math.tan
 
 const val colorDepth = 255
