@@ -42,7 +42,7 @@ class Scene {
         val fy = -(2 * py / width - 1) * tan(camera.fovY / 2)
         val localDir = Vec3(fx, fy,1)
         val direction = localDir.x * camera.right + localDir.y * camera.up + localDir.z * camera.forward
-        val directionNormal = direction.normalizeAssign()
+        val directionNormal = direction.normalize()
         return Ray(camera.position, directionNormal)
     }
 
