@@ -38,7 +38,7 @@ class Commands(var scene: Scene) {
 
     val commandSetFovX = { angle: Float ->
         scene.camera.fovX = angle
-        val aspectRatio = scene.width / scene.height
+        val aspectRatio = scene.width.toFloat() / scene.height
         scene.camera.fovY = 2 * atan( tan(angle / 2) / aspectRatio )
     }
 
